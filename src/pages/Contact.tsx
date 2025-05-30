@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -7,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+import InteractiveMap from "@/components/InteractiveMap";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -188,12 +188,8 @@ const Contact = () => {
               <h2 className="text-4xl font-bold text-green-900 mb-6">Find Us</h2>
               <p className="text-xl text-gray-700">Located in the heart of Karnataka's coconut farming region</p>
             </div>
-            <div className="bg-gray-200 h-80 rounded-lg flex items-center justify-center">
-              <div className="text-center">
-                <span className="text-6xl mb-4 block">🗺️</span>
-                <p className="text-xl text-gray-600">Interactive Map Coming Soon</p>
-                <p className="text-gray-500">Karnataka, India - Coconut Farming Region</p>
-              </div>
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+              <InteractiveMap />
             </div>
           </div>
         </div>
