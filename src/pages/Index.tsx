@@ -162,7 +162,7 @@ const Index = () => {
 
               <Card className="border-amber-200 hover:shadow-xl transition-all">
                 <div className="h-48 bg-gradient-to-br from-amber-100 to-amber-200 rounded-t-lg overflow-hidden">
-                  <img alt="Coconut Milkshake" className="w-full h-full object-cover" src="/lovable-uploads/f09ab321-b72e-4b06-8c07-bc6c13927390.png" />
+                  <img alt="Coconut Milkshake" className="w-full h-full object-cover" src="/lovable-uploads/d370a513-6062-4ecb-8449-7881c7e6c0ba.jpg" />
                 </div>
                 <CardHeader>
                   <CardTitle className="text-amber-800">Coconut Milkshake</CardTitle>
