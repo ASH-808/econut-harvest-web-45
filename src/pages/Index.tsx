@@ -1,23 +1,17 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { ArrowDown, Leaf, Users, Award } from "lucide-react";
-
 const Index = () => {
-  return (
-    <div className="min-h-screen bg-white">
+  return <div className="min-h-screen bg-white">
       <Navigation />
       
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-green-50 to-amber-50 min-h-screen flex items-center">
-        <div 
-          className="absolute inset-0 bg-cover bg-center opacity-30"
-          style={{
-            backgroundImage: "url('/lovable-uploads/7861bcd8-0e5d-4eed-896c-612ff18dfbb1.png')"
-          }}
-        />
+        <div className="absolute inset-0 bg-cover bg-center opacity-30" style={{
+        backgroundImage: "url('/lovable-uploads/7861bcd8-0e5d-4eed-896c-612ff18dfbb1.png')"
+      }} />
         <div className="relative container mx-auto px-4 py-20">
           <div className="max-w-5xl mx-auto text-center">
             <div className="mb-6">
@@ -58,19 +52,10 @@ const Index = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
-                className="bg-green-700 hover:bg-green-800 text-white px-10 py-4 text-lg font-semibold rounded-full"
-                onClick={() => window.location.href = '/products'}
-              >
+              <Button size="lg" className="bg-green-700 hover:bg-green-800 text-white px-10 py-4 text-lg font-semibold rounded-full" onClick={() => window.location.href = '/products'}>
                 Shop Products
               </Button>
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="border-2 border-green-700 text-green-700 hover:bg-green-50 px-10 py-4 text-lg font-semibold rounded-full"
-                onClick={() => window.location.href = '/about'}
-              >
+              <Button variant="outline" size="lg" className="border-2 border-green-700 text-green-700 hover:bg-green-50 px-10 py-4 text-lg font-semibold rounded-full" onClick={() => window.location.href = '/about'}>
                 Our Story
               </Button>
             </div>
@@ -157,11 +142,7 @@ const Index = () => {
             <div className="grid md:grid-cols-3 gap-8 mb-12">
               <Card className="border-amber-200 hover:shadow-xl transition-all">
                 <div className="h-48 bg-gradient-to-br from-amber-100 to-amber-200 rounded-t-lg overflow-hidden">
-                  <img 
-                    src="/lovable-uploads/c117b41a-730c-4822-b799-1194e67e8fe4.png" 
-                    alt="Neera Sugar" 
-                    className="w-full h-full object-cover"
-                  />
+                  <img alt="Neera Sugar" className="w-full h-full object-cover" src="/lovable-uploads/4eec5d53-4ec9-46c5-9f69-2b8a389b5f3a.jpg" />
                 </div>
                 <CardHeader>
                   <CardTitle className="text-amber-800">Neera Sugar</CardTitle>
@@ -181,11 +162,7 @@ const Index = () => {
 
               <Card className="border-amber-200 hover:shadow-xl transition-all">
                 <div className="h-48 bg-gradient-to-br from-amber-100 to-amber-200 rounded-t-lg overflow-hidden">
-                  <img 
-                    src="/lovable-uploads/f09ab321-b72e-4b06-8c07-bc6c13927390.png" 
-                    alt="Coconut Milkshake" 
-                    className="w-full h-full object-cover"
-                  />
+                  <img src="/lovable-uploads/f09ab321-b72e-4b06-8c07-bc6c13927390.png" alt="Coconut Milkshake" className="w-full h-full object-cover" />
                 </div>
                 <CardHeader>
                   <CardTitle className="text-amber-800">Coconut Milkshake</CardTitle>
@@ -195,11 +172,7 @@ const Index = () => {
             </div>
             
             <div className="text-center">
-              <Button 
-                size="lg"
-                className="bg-amber-700 hover:bg-amber-800 text-white px-8 py-4 text-lg font-semibold rounded-full"
-                onClick={() => window.location.href = '/products'}
-              >
+              <Button size="lg" className="bg-amber-700 hover:bg-amber-800 text-white px-8 py-4 text-lg font-semibold rounded-full" onClick={() => window.location.href = '/products'}>
                 View All Products
               </Button>
             </div>
@@ -208,8 +181,6 @@ const Index = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
