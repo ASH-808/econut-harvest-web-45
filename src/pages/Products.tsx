@@ -1,4 +1,3 @@
-
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -36,7 +35,7 @@ const Products = () => {
       description: "Fresh coconut water directly from young green coconuts. Natural isotonic drink packed with electrolytes and minerals.",
       benefits: ["Natural electrolytes", "Zero calories", "Hydrating"],
       price: "₹50/300ml",
-      image: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=400&h=400&fit=crop"
+      image: "/lovable-uploads/7b39763f-b2c9-4e80-a19e-36a91d581f32.png"
     },
     {
       id: 5,
