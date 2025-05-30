@@ -83,14 +83,14 @@ const Products = () => {
     <div className="min-h-screen bg-white">
       <Navigation />
       
-      {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-green-50 to-amber-50">
-        <div className="container mx-auto px-4">
+      {/* Hero Section - Enhanced Mobile Responsiveness */}
+      <section className="pt-20 sm:pt-24 pb-8 sm:pb-16 bg-gradient-to-br from-green-50 to-amber-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl font-bold text-green-900 mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-green-900 mb-4 sm:mb-6 leading-tight">
               Premium Organic Products
             </h1>
-            <p className="text-xl text-green-800 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-green-800 max-w-3xl mx-auto leading-relaxed px-4">
               Discover our complete range of authentic coconut products, sourced directly 
               from Karnataka's finest organic farms and processed with traditional methods.
             </p>
@@ -98,14 +98,14 @@ const Products = () => {
         </div>
       </section>
 
-      {/* Products Grid */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      {/* Products Grid - Enhanced Mobile Layout */}
+      <section className="py-10 sm:py-16 lg:py-20 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
               {products.map((product) => (
-                <Card key={product.id} className="border-green-200 hover:shadow-xl transition-all group overflow-hidden">
-                  <div className="h-48 bg-gradient-to-br from-green-100 to-amber-100 overflow-hidden">
+                <Card key={product.id} className="border-green-200 hover:shadow-xl transition-all group overflow-hidden h-full flex flex-col">
+                  <div className="h-40 sm:h-48 bg-gradient-to-br from-green-100 to-amber-100 overflow-hidden">
                     <img 
                       src={product.image}
                       alt={product.name}
@@ -113,29 +113,29 @@ const Products = () => {
                       loading="lazy"
                     />
                   </div>
-                  <CardHeader className="text-center">
-                    <CardTitle className="text-green-900 text-xl">{product.name}</CardTitle>
-                    <div className="text-2xl font-bold text-amber-700">{product.price}</div>
+                  <CardHeader className="text-center pb-3 sm:pb-4">
+                    <CardTitle className="text-green-900 text-lg sm:text-xl leading-tight">{product.name}</CardTitle>
+                    <div className="text-xl sm:text-2xl font-bold text-amber-700">{product.price}</div>
                   </CardHeader>
-                  <CardContent>
-                    <CardDescription className="text-gray-600 mb-4">
+                  <CardContent className="flex-grow px-4 sm:px-6">
+                    <CardDescription className="text-gray-600 mb-3 sm:mb-4 text-sm sm:text-base leading-relaxed">
                       {product.description}
                     </CardDescription>
                     <div className="space-y-2">
                       <h4 className="font-semibold text-green-800 text-sm">Key Benefits:</h4>
-                      <ul className="text-sm text-gray-600">
+                      <ul className="text-xs sm:text-sm text-gray-600 space-y-1">
                         {product.benefits.map((benefit, index) => (
-                          <li key={index} className="flex items-center">
-                            <span className="text-green-600 mr-2">✓</span>
-                            {benefit}
+                          <li key={index} className="flex items-start">
+                            <span className="text-green-600 mr-2 mt-0.5 flex-shrink-0">✓</span>
+                            <span className="leading-relaxed">{benefit}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
                   </CardContent>
-                  <CardFooter>
+                  <CardFooter className="pt-4 px-4 sm:px-6">
                     <Button 
-                      className="w-full bg-green-700 hover:bg-green-800 text-white font-semibold transform transition-all duration-300 hover:scale-105"
+                      className="w-full bg-green-700 hover:bg-green-800 text-white font-semibold transform transition-all duration-300 hover:scale-105 text-sm sm:text-base py-2 sm:py-3"
                       onClick={() => window.location.href = '/contact'}
                     >
                       Buy Now
@@ -148,50 +148,50 @@ const Products = () => {
         </div>
       </section>
 
-      {/* Quality Promise */}
-      <section className="py-20 bg-gradient-to-br from-amber-50 to-green-50">
-        <div className="container mx-auto px-4">
+      {/* Quality Promise - Enhanced Mobile Layout */}
+      <section className="py-10 sm:py-16 lg:py-20 bg-gradient-to-br from-amber-50 to-green-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-green-900 mb-6">
+            <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-green-900 mb-4 sm:mb-6 leading-tight">
                 Our Quality Promise
               </h2>
-              <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+              <p className="text-base sm:text-lg lg:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed px-4">
                 Every product is carefully crafted using traditional methods and modern quality standards
               </p>
             </div>
             
-            <div className="grid md:grid-cols-4 gap-8">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 transform transition-all duration-300 hover:scale-110 hover:rotate-6">
-                  <span className="text-2xl">🌱</span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+              <div className="text-center px-4">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 transform transition-all duration-300 hover:scale-110 hover:rotate-6">
+                  <span className="text-xl sm:text-2xl">🌱</span>
                 </div>
-                <h3 className="font-semibold text-green-900 mb-2">100% Organic</h3>
-                <p className="text-gray-600 text-sm">Certified organic farming without chemicals or pesticides</p>
+                <h3 className="font-semibold text-green-900 mb-2 text-sm sm:text-base">100% Organic</h3>
+                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">Certified organic farming without chemicals or pesticides</p>
               </div>
               
-              <div className="text-center">
-                <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4 transform transition-all duration-300 hover:scale-110 hover:rotate-6">
-                  <span className="text-2xl">🤝</span>
+              <div className="text-center px-4">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 transform transition-all duration-300 hover:scale-110 hover:rotate-6">
+                  <span className="text-xl sm:text-2xl">🤝</span>
                 </div>
-                <h3 className="font-semibold text-amber-800 mb-2">Direct from Farmers</h3>
-                <p className="text-gray-600 text-sm">No middlemen, ensuring freshness and fair prices</p>
+                <h3 className="font-semibold text-amber-800 mb-2 text-sm sm:text-base">Direct from Farmers</h3>
+                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">No middlemen, ensuring freshness and fair prices</p>
               </div>
               
-              <div className="text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 transform transition-all duration-300 hover:scale-110 hover:rotate-6">
-                  <span className="text-2xl">⚡</span>
+              <div className="text-center px-4">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 transform transition-all duration-300 hover:scale-110 hover:rotate-6">
+                  <span className="text-xl sm:text-2xl">⚡</span>
                 </div>
-                <h3 className="font-semibold text-green-900 mb-2">Fresh Processing</h3>
-                <p className="text-gray-600 text-sm">Processed within 24 hours of harvest for maximum nutrition</p>
+                <h3 className="font-semibold text-green-900 mb-2 text-sm sm:text-base">Fresh Processing</h3>
+                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">Processed within 24 hours of harvest for maximum nutrition</p>
               </div>
               
-              <div className="text-center">
-                <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4 transform transition-all duration-300 hover:scale-110 hover:rotate-6">
-                  <span className="text-2xl">🏆</span>
+              <div className="text-center px-4">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 transform transition-all duration-300 hover:scale-110 hover:rotate-6">
+                  <span className="text-xl sm:text-2xl">🏆</span>
                 </div>
-                <h3 className="font-semibold text-amber-800 mb-2">Quality Tested</h3>
-                <p className="text-gray-600 text-sm">Rigorous quality checks and organic certification</p>
+                <h3 className="font-semibold text-amber-800 mb-2 text-sm sm:text-base">Quality Tested</h3>
+                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">Rigorous quality checks and organic certification</p>
               </div>
             </div>
           </div>

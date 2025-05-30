@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -17,26 +18,26 @@ const Navigation = () => {
 
   return (
     <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-green-100 z-50">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-14 sm:h-16">
           {/* Logo */}
           <div className="flex items-center">
             <a href="/" className="flex items-center">
               <img 
                 src="/lovable-uploads/9d6b336d-213b-44ce-bd5a-0ccafd7fd63d.png" 
                 alt="ECONUT Logo" 
-                className="h-10 w-auto"
+                className="h-8 sm:h-10 w-auto"
               />
             </a>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="text-green-700 hover:text-green-900 font-medium transition-colors"
+                className="text-green-700 hover:text-green-900 font-medium transition-colors text-sm xl:text-base whitespace-nowrap"
               >
                 {item.name}
               </a>
@@ -44,12 +45,12 @@ const Navigation = () => {
           </div>
 
           {/* Mobile Navigation */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
+                <Button variant="ghost" size="icon" className="h-9 w-9 sm:h-10 sm:w-10">
                   <svg
-                    className="h-6 w-6"
+                    className="h-5 w-5 sm:h-6 sm:w-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -63,13 +64,13 @@ const Navigation = () => {
                   </svg>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-64">
-                <div className="flex flex-col space-y-4 mt-6">
+              <SheetContent side="right" className="w-64 sm:w-72">
+                <div className="flex flex-col space-y-1 mt-6">
                   {navItems.map((item) => (
                     <a
                       key={item.name}
                       href={item.href}
-                      className="text-green-700 hover:text-green-900 font-medium transition-colors px-4 py-2"
+                      className="text-green-700 hover:text-green-900 hover:bg-green-50 font-medium transition-colors px-4 py-3 rounded-md text-base"
                       onClick={() => setIsOpen(false)}
                     >
                       {item.name}
