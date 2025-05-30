@@ -3,8 +3,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { ArrowDown, Leaf, Users, Award } from "lucide-react";
+
 const Index = () => {
-  return <div className="min-h-screen bg-white">
+  return (
+    <div className="min-h-screen bg-white">
       <Navigation />
       
       {/* Hero Section */}
@@ -142,7 +144,7 @@ const Index = () => {
             <div className="grid md:grid-cols-3 gap-8 mb-12">
               <Card className="border-amber-200 hover:shadow-xl transition-all">
                 <div className="h-48 bg-gradient-to-br from-amber-100 to-amber-200 rounded-t-lg overflow-hidden">
-                  <img alt="Neera Sugar" className="w-full h-full object-cover" src="/lovable-uploads/4eec5d53-4ec9-46c5-9f69-2b8a389b5f3a.jpg" />
+                  <img alt="Neera Sugar" className="w-full h-full object-cover" src="/lovable-uploads/c117b41a-730c-4822-b799-1194e67e8fe4.png" />
                 </div>
                 <CardHeader>
                   <CardTitle className="text-amber-800">Neera Sugar</CardTitle>
@@ -151,8 +153,8 @@ const Index = () => {
               </Card>
 
               <Card className="border-green-200 hover:shadow-xl transition-all">
-                <div className="h-48 bg-gradient-to-br from-green-100 to-green-200 rounded-t-lg flex items-center justify-center">
-                  <span className="text-6xl">🥥</span>
+                <div className="h-48 bg-gradient-to-br from-green-100 to-green-200 rounded-t-lg overflow-hidden">
+                  <img alt="Virgin Coconut Oil" className="w-full h-full object-cover" src="/lovable-uploads/40a66529-6750-4393-af80-e85e5aed29d8.png" />
                 </div>
                 <CardHeader>
                   <CardTitle className="text-green-800">Virgin Coconut Oil</CardTitle>
@@ -162,7 +164,7 @@ const Index = () => {
 
               <Card className="border-amber-200 hover:shadow-xl transition-all">
                 <div className="h-48 bg-gradient-to-br from-amber-100 to-amber-200 rounded-t-lg overflow-hidden">
-                  <img alt="Coconut Milkshake" className="w-full h-full object-cover" src="/lovable-uploads/d75db05a-d3bf-463e-aee6-c4d7d26547d0.jpg" />
+                  <img alt="Coconut Milkshake" className="w-full h-full object-cover" src="/lovable-uploads/f09ab321-b72e-4b06-8c07-bc6c13927390.png" />
                 </div>
                 <CardHeader>
                   <CardTitle className="text-amber-800">Coconut Milkshake</CardTitle>
@@ -181,6 +183,8 @@ const Index = () => {
       </section>
 
       <Footer />
-    </div>;
+    </div>
+  );
 };
+
 export default Index;
