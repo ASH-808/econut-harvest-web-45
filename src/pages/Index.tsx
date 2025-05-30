@@ -3,10 +3,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { ArrowDown, Leaf, Users, Award } from "lucide-react";
-
 const Index = () => {
-  return (
-    <div className="min-h-screen bg-white">
+  return <div className="min-h-screen bg-white">
       <Navigation />
       
       {/* Hero Section */}
@@ -144,7 +142,7 @@ const Index = () => {
             <div className="grid md:grid-cols-3 gap-8 mb-12">
               <Card className="border-amber-200 hover:shadow-xl transition-all">
                 <div className="h-48 bg-gradient-to-br from-amber-100 to-amber-200 rounded-t-lg overflow-hidden">
-                  <img alt="Neera Sugar" className="w-full h-full object-cover" src="/lovable-uploads/c117b41a-730c-4822-b799-1194e67e8fe4.png" />
+                  <img alt="Neera Sugar" className="w-full h-full object-cover" src="/lovable-uploads/eba3f987-276d-4443-8831-72d6c8043626.jpg" />
                 </div>
                 <CardHeader>
                   <CardTitle className="text-amber-800">Neera Sugar</CardTitle>
@@ -183,8 +181,6 @@ const Index = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
