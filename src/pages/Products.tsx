@@ -12,7 +12,7 @@ const Products = () => {
       description: "Natural sweetener extracted from fresh coconut palm nectar. Low glycemic index makes it perfect for health-conscious consumers and diabetics.",
       benefits: ["Low glycemic index", "Rich in minerals", "Unprocessed natural sweetener"],
       price: "₹250/kg",
-      emoji: "🍯"
+      image: "/lovable-uploads/eba3f987-276d-4443-8831-72d6c8043626.jpg"
     },
     {
       id: 2,
@@ -20,7 +20,7 @@ const Products = () => {
       description: "Cold-pressed from fresh coconut meat, retaining all natural nutrients and flavor. Perfect for cooking, skincare, and haircare.",
       benefits: ["Cold-pressed", "High in MCTs", "Multipurpose use"],
       price: "₹400/500ml",
-      emoji: "🥥"
+      image: "/lovable-uploads/40a66529-6750-4393-af80-e85e5aed29d8.png"
     },
     {
       id: 3,
@@ -28,7 +28,7 @@ const Products = () => {
       description: "Ready-to-drink natural coconut milkshake made from fresh coconuts. Refreshing and nutritious with no artificial additives.",
       benefits: ["No preservatives", "Natural electrolytes", "Instant energy"],
       price: "₹80/250ml",
-      emoji: "🥤"
+      image: "/lovable-uploads/d370a513-6062-4ecb-8449-7881c7e6c0ba.jpg"
     },
     {
       id: 4,
@@ -36,7 +36,7 @@ const Products = () => {
       description: "Fresh coconut water directly from young green coconuts. Natural isotonic drink packed with electrolytes and minerals.",
       benefits: ["Natural electrolytes", "Zero calories", "Hydrating"],
       price: "₹50/300ml",
-      emoji: "💧"
+      image: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=400&h=400&fit=crop"
     },
     {
       id: 5,
@@ -44,7 +44,7 @@ const Products = () => {
       description: "Gluten-free flour made from dried coconut meat. High in fiber and protein, perfect for healthy baking and cooking.",
       benefits: ["Gluten-free", "High fiber", "Protein-rich"],
       price: "₹180/500g",
-      emoji: "🌾"
+      image: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=400&h=400&fit=crop"
     },
     {
       id: 6,
@@ -52,7 +52,7 @@ const Products = () => {
       description: "Finely grated dried coconut meat. Ideal for baking, cooking, and as a healthy snack ingredient.",
       benefits: ["Long shelf life", "Versatile ingredient", "Natural flavor"],
       price: "₹120/250g",
-      emoji: "🥥"
+      image: "https://images.unsplash.com/photo-1605522324253-0f1d0f0aa0ac?w=400&h=400&fit=crop"
     },
     {
       id: 7,
@@ -60,7 +60,7 @@ const Products = () => {
       description: "Crispy toasted coconut slices, lightly sweetened. A healthy snack alternative packed with natural flavor.",
       benefits: ["Healthy snacking", "Natural sweetness", "Crunchy texture"],
       price: "₹150/200g",
-      emoji: "🍪"
+      image: "https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=400&h=400&fit=crop"
     },
     {
       id: 8,
@@ -68,7 +68,7 @@ const Products = () => {
       description: "Fermented coconut sap vinegar with probiotic benefits. Natural and organic with rich, complex flavor profile.",
       benefits: ["Probiotic benefits", "Natural fermentation", "Rich in amino acids"],
       price: "₹200/500ml",
-      emoji: "🍶"
+      image: "https://images.unsplash.com/photo-1570426788048-6d62c1d86dda?w=400&h=400&fit=crop"
     },
     {
       id: 9,
@@ -76,7 +76,7 @@ const Products = () => {
       description: "Sweet syrup made from coconut palm nectar. Natural alternative to processed sugar with unique tropical flavor.",
       benefits: ["Mineral-rich", "Natural sweetener", "Tropical flavor"],
       price: "₹300/350ml",
-      emoji: "🍯"
+      image: "https://images.unsplash.com/photo-1587049633312-d628ae50a8ae?w=400&h=400&fit=crop"
     }
   ];
 
@@ -105,11 +105,16 @@ const Products = () => {
           <div className="max-w-7xl mx-auto">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {products.map((product) => (
-                <Card key={product.id} className="border-green-200 hover:shadow-xl transition-all group">
+                <Card key={product.id} className="border-green-200 hover:shadow-xl transition-all group overflow-hidden">
+                  <div className="h-48 bg-gradient-to-br from-green-100 to-amber-100 overflow-hidden">
+                    <img 
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      loading="lazy"
+                    />
+                  </div>
                   <CardHeader className="text-center">
-                    <div className="w-20 h-20 bg-gradient-to-br from-green-100 to-amber-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                      <span className="text-4xl">{product.emoji}</span>
-                    </div>
                     <CardTitle className="text-green-900 text-xl">{product.name}</CardTitle>
                     <div className="text-2xl font-bold text-amber-700">{product.price}</div>
                   </CardHeader>
@@ -131,7 +136,7 @@ const Products = () => {
                   </CardContent>
                   <CardFooter>
                     <Button 
-                      className="w-full bg-green-700 hover:bg-green-800 text-white font-semibold"
+                      className="w-full bg-green-700 hover:bg-green-800 text-white font-semibold transform transition-all duration-300 hover:scale-105"
                       onClick={() => window.location.href = '/contact'}
                     >
                       Buy Now
@@ -159,7 +164,7 @@ const Products = () => {
             
             <div className="grid md:grid-cols-4 gap-8">
               <div className="text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 transform transition-all duration-300 hover:scale-110 hover:rotate-6">
                   <span className="text-2xl">🌱</span>
                 </div>
                 <h3 className="font-semibold text-green-900 mb-2">100% Organic</h3>
@@ -167,7 +172,7 @@ const Products = () => {
               </div>
               
               <div className="text-center">
-                <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4 transform transition-all duration-300 hover:scale-110 hover:rotate-6">
                   <span className="text-2xl">🤝</span>
                 </div>
                 <h3 className="font-semibold text-amber-800 mb-2">Direct from Farmers</h3>
@@ -175,7 +180,7 @@ const Products = () => {
               </div>
               
               <div className="text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 transform transition-all duration-300 hover:scale-110 hover:rotate-6">
                   <span className="text-2xl">⚡</span>
                 </div>
                 <h3 className="font-semibold text-green-900 mb-2">Fresh Processing</h3>
@@ -183,7 +188,7 @@ const Products = () => {
               </div>
               
               <div className="text-center">
-                <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4 transform transition-all duration-300 hover:scale-110 hover:rotate-6">
                   <span className="text-2xl">🏆</span>
                 </div>
                 <h3 className="font-semibold text-amber-800 mb-2">Quality Tested</h3>
