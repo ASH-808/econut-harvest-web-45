@@ -1,4 +1,3 @@
-
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -44,7 +43,7 @@ const Products = () => {
       description: "Gluten-free flour made from dried coconut meat. High in fiber and protein, perfect for healthy baking and cooking.",
       benefits: ["Gluten-free", "High fiber", "Protein-rich"],
       price: "₹180/500g",
-      image: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=400&h=400&fit=crop"
+      image: "/lovable-uploads/65c2405b-e79f-4e73-9077-70cf07c73528.png"
     },
     {
       id: 6,
@@ -52,7 +51,7 @@ const Products = () => {
       description: "Finely grated dried coconut meat. Ideal for baking, cooking, and as a healthy snack ingredient.",
       benefits: ["Long shelf life", "Versatile ingredient", "Natural flavor"],
       price: "₹120/250g",
-      image: "https://images.unsplash.com/photo-1605522324253-0f1d0f0aa0ac?w=400&h=400&fit=crop"
+      image: "/lovable-uploads/4f7cdc93-8dec-4929-8e2c-f3220877d8df.png"
     },
     {
       id: 7,
@@ -60,7 +59,7 @@ const Products = () => {
       description: "Crispy toasted coconut slices, lightly sweetened. A healthy snack alternative packed with natural flavor.",
       benefits: ["Healthy snacking", "Natural sweetness", "Crunchy texture"],
       price: "₹150/200g",
-      image: "https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=400&h=400&fit=crop"
+      image: "/lovable-uploads/76fae9b7-a121-431b-99ae-463953be2d96.png"
     },
     {
       id: 8,
@@ -68,7 +67,7 @@ const Products = () => {
       description: "Fermented coconut sap vinegar with probiotic benefits. Natural and organic with rich, complex flavor profile.",
       benefits: ["Probiotic benefits", "Natural fermentation", "Rich in amino acids"],
       price: "₹200/500ml",
-      image: "https://images.unsplash.com/photo-1570426788048-6d62c1d86dda?w=400&h=400&fit=crop"
+      image: "/lovable-uploads/d9c9c81a-f280-4850-a25e-28a2ba126e7d.png"
     },
     {
       id: 9,
@@ -76,7 +75,7 @@ const Products = () => {
       description: "Sweet syrup made from coconut palm nectar. Natural alternative to processed sugar with unique tropical flavor.",
       benefits: ["Mineral-rich", "Natural sweetener", "Tropical flavor"],
       price: "₹300/350ml",
-      image: "https://images.unsplash.com/photo-1587049633312-d628ae50a8ae?w=400&h=400&fit=crop"
+      image: "/lovable-uploads/923f827e-32a3-46f8-aac9-bf574b032056.png"
     }
   ];
 
