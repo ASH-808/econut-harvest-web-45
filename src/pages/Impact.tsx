@@ -8,14 +8,25 @@ const Impact = () => {
     <div className="min-h-screen bg-white">
       <Navigation />
       
-      {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-green-50 to-amber-50">
-        <div className="container mx-auto px-4">
+      {/* Hero Section - Enhanced with Background Image */}
+      <section 
+        className="pt-24 pb-16 bg-gradient-to-br from-green-50/90 to-amber-50/90 relative"
+        style={{
+          backgroundImage: `url('https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1920&h=1080&fit=crop')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-green-900/40 to-amber-900/30"></div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl font-bold text-green-900 mb-6">
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
               Our Impact
             </h1>
-            <p className="text-xl text-green-800 max-w-3xl mx-auto">
+            <p className="text-xl text-white/95 max-w-3xl mx-auto drop-shadow-md">
               Transforming lives, empowering communities, and building a sustainable future 
               for coconut farming in Karnataka.
             </p>
