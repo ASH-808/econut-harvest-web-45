@@ -5,15 +5,28 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import AnimatedCounter from "@/components/AnimatedCounter";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { ArrowDown, Leaf, Users, Award, Mail, Phone, MapPin, Send, Star, Shield, Heart, Recycle, ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
 
 const Index = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  
+  // Animation refs for different sections
+  const [heroRef, heroVisible] = useScrollAnimation();
+  const [missionRef, missionVisible] = useScrollAnimation();
+  const [productsRef, productsVisible] = useScrollAnimation();
+  const [testimonialsRef, testimonialsVisible] = useScrollAnimation();
+  const [farmersRef, farmersVisible] = useScrollAnimation();
+  const [certificationsRef, certificationsVisible] = useScrollAnimation();
+  const [healthRef, healthVisible] = useScrollAnimation();
+  const [impactRef, impactVisible] = useScrollAnimation();
+  const [faqRef, faqVisible] = useScrollAnimation();
+  const [contactRef, contactVisible] = useScrollAnimation();
 
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
     console.log("Contact form submitted");
   };
 
@@ -26,42 +39,59 @@ const Index = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-green-50 to-amber-50 min-h-screen flex items-center">
-        <div className="absolute inset-0 bg-cover bg-center opacity-30" style={{
-        backgroundImage: "url('/lovable-uploads/7861bcd8-0e5d-4eed-896c-612ff18dfbb1.png')"
-      }} />
+      <section 
+        ref={heroRef}
+        className={`relative bg-gradient-to-br from-green-50 to-amber-50 min-h-screen flex items-center transition-all duration-1000 ${
+          heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
+      >
+        <div className="absolute inset-0 bg-cover bg-center opacity-30 transition-opacity duration-1000" style={{
+          backgroundImage: "url('/lovable-uploads/7861bcd8-0e5d-4eed-896c-612ff18dfbb1.png')"
+        }} />
         <div className="relative container mx-auto px-4 py-20">
           <div className="max-w-5xl mx-auto text-center">
             <div className="mb-6">
-              <span className="inline-block px-4 py-2 bg-green-100 text-green-800 font-semibold rounded-full text-sm mb-4">
+              <span className={`inline-block px-4 py-2 bg-green-100 text-green-800 font-semibold rounded-full text-sm mb-4 transition-all duration-500 transform ${
+                heroVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'
+              }`}>
                 Premium Organic Products
               </span>
             </div>
-            <h1 className="font-bold text-4xl md:text-6xl lg:text-7xl text-green-900 mb-8 leading-tight">
+            <h1 className={`font-bold text-4xl md:text-6xl lg:text-7xl text-green-900 mb-8 leading-tight transition-all duration-700 delay-200 ${
+              heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}>
               From Farm to Your Table
             </h1>
-            <p className="text-xl md:text-2xl text-green-700 mb-12 max-w-2xl mx-auto font-medium">
+            <p className={`text-xl md:text-2xl text-green-700 mb-12 max-w-2xl mx-auto font-medium transition-all duration-700 delay-400 ${
+              heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}>
               Connecting Karnataka's finest coconut farmers directly with conscious consumers
             </p>
             
-            {/* Key Stats */}
-            <div className="grid grid-cols-3 gap-8 mb-12 max-w-lg mx-auto">
-              <div className="text-center">
-                <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-2">
+            {/* Key Stats with Animation */}
+            <div className={`grid grid-cols-3 gap-8 mb-12 max-w-lg mx-auto transition-all duration-700 delay-600 ${
+              heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}>
+              <div className="text-center group">
+                <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-2 transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-6">
                   <Leaf className="w-6 h-6 text-white" />
                 </div>
-                <div className="text-2xl font-bold text-green-900">100%</div>
+                <div className="text-2xl font-bold text-green-900">
+                  {heroVisible && <AnimatedCounter end={100} suffix="%" />}
+                </div>
                 <div className="text-sm text-green-700">Organic</div>
               </div>
-              <div className="text-center">
-                <div className="w-12 h-12 bg-amber-600 rounded-full flex items-center justify-center mx-auto mb-2">
+              <div className="text-center group">
+                <div className="w-12 h-12 bg-amber-600 rounded-full flex items-center justify-center mx-auto mb-2 transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-6">
                   <Users className="w-6 h-6 text-white" />
                 </div>
-                <div className="text-2xl font-bold text-green-900">500+</div>
+                <div className="text-2xl font-bold text-green-900">
+                  {heroVisible && <AnimatedCounter end={500} suffix="+" />}
+                </div>
                 <div className="text-sm text-green-700">Farmers</div>
               </div>
-              <div className="text-center">
-                <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-2">
+              <div className="text-center group">
+                <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-2 transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-6">
                   <Award className="w-6 h-6 text-white" />
                 </div>
                 <div className="text-2xl font-bold text-green-900">A+</div>
@@ -69,11 +99,22 @@ const Index = () => {
               </div>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-green-700 hover:bg-green-800 text-white px-10 py-4 text-lg font-semibold rounded-full" onClick={() => window.location.href = '/products'}>
+            <div className={`flex flex-col sm:flex-row gap-4 justify-center transition-all duration-700 delay-800 ${
+              heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}>
+              <Button 
+                size="lg" 
+                className="bg-green-700 hover:bg-green-800 text-white px-10 py-4 text-lg font-semibold rounded-full transform transition-all duration-300 hover:scale-105 hover:shadow-lg" 
+                onClick={() => window.location.href = '/products'}
+              >
                 Shop Products
               </Button>
-              <Button variant="outline" size="lg" className="border-2 border-green-700 text-green-700 hover:bg-green-50 px-10 py-4 text-lg font-semibold rounded-full" onClick={() => window.location.href = '/about'}>
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="border-2 border-green-700 text-green-700 hover:bg-green-50 px-10 py-4 text-lg font-semibold rounded-full transform transition-all duration-300 hover:scale-105 hover:shadow-lg" 
+                onClick={() => window.location.href = '/about'}
+              >
                 Our Story
               </Button>
             </div>
@@ -85,112 +126,144 @@ const Index = () => {
       </section>
 
       {/* Mission Overview */}
-      <section className="py-20 bg-white">
+      <section 
+        ref={missionRef}
+        className={`py-20 bg-white transition-all duration-1000 ${
+          missionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
+      >
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-green-900 mb-6">
+              <h2 className={`text-4xl md:text-5xl font-bold text-green-900 mb-6 transition-all duration-700 ${
+                missionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}>
                 Why Choose ECONUT
               </h2>
-              <p className="text-xl text-gray-700 max-w-2xl mx-auto">
+              <p className={`text-xl text-gray-700 max-w-2xl mx-auto transition-all duration-700 delay-200 ${
+                missionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}>
                 Experience the difference of authentic, farm-fresh coconut products
               </p>
             </div>
             
             <div className="grid md:grid-cols-3 gap-8">
-              <Card className="border-green-200 hover:shadow-lg transition-shadow text-center">
-                <CardHeader>
-                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl">🌱</span>
-                  </div>
-                  <CardTitle className="text-green-900">Sustainable Farming</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-gray-600">
-                    100% organic practices that protect the environment and ensure premium quality
-                  </CardDescription>
-                </CardContent>
-              </Card>
-
-              <Card className="border-amber-200 hover:shadow-lg transition-shadow text-center">
-                <CardHeader>
-                  <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl">🤝</span>
-                  </div>
-                  <CardTitle className="text-amber-800">Direct Trade</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-gray-600">
-                    Fair prices for farmers, fresh products for you - no middlemen involved
-                  </CardDescription>
-                </CardContent>
-              </Card>
-
-              <Card className="border-green-200 hover:shadow-lg transition-shadow text-center">
-                <CardHeader>
-                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl">💪</span>
-                  </div>
-                  <CardTitle className="text-green-900">Community Impact</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-gray-600">
-                    Supporting rural communities and creating sustainable livelihoods
-                  </CardDescription>
-                </CardContent>
-              </Card>
+              {[
+                {
+                  icon: "🌱",
+                  title: "Sustainable Farming",
+                  description: "100% organic practices that protect the environment and ensure premium quality",
+                  delay: "delay-300"
+                },
+                {
+                  icon: "🤝",
+                  title: "Direct Trade",
+                  description: "Fair prices for farmers, fresh products for you - no middlemen involved",
+                  delay: "delay-500"
+                },
+                {
+                  icon: "💪",
+                  title: "Community Impact",
+                  description: "Supporting rural communities and creating sustainable livelihoods",
+                  delay: "delay-700"
+                }
+              ].map((item, index) => (
+                <Card 
+                  key={index}
+                  className={`border-green-200 hover:shadow-xl transition-all duration-500 text-center transform hover:scale-105 hover:-translate-y-2 ${
+                    missionVisible ? `opacity-100 translate-y-0 ${item.delay}` : 'opacity-0 translate-y-10'
+                  }`}
+                >
+                  <CardHeader>
+                    <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 transform transition-all duration-300 hover:rotate-12">
+                      <span className="text-2xl">{item.icon}</span>
+                    </div>
+                    <CardTitle className="text-green-900">{item.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-gray-600">
+                      {item.description}
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* Featured Products Preview */}
-      <section className="py-20 bg-gradient-to-br from-amber-50 to-green-50">
+      <section 
+        ref={productsRef}
+        className={`py-20 bg-gradient-to-br from-amber-50 to-green-50 transition-all duration-1000 ${
+          productsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
+      >
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-green-900 mb-6">
+              <h2 className={`text-4xl md:text-5xl font-bold text-green-900 mb-6 transition-all duration-700 ${
+                productsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}>
                 Featured Products
               </h2>
-              <p className="text-xl text-gray-700 max-w-2xl mx-auto mb-8">
+              <p className={`text-xl text-gray-700 max-w-2xl mx-auto mb-8 transition-all duration-700 delay-200 ${
+                productsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}>
                 Discover our premium coconut products, sourced directly from Karnataka's finest farms
               </p>
             </div>
             
             <div className="grid md:grid-cols-3 gap-8 mb-12">
-              <Card className="border-amber-200 hover:shadow-xl transition-all">
-                <div className="h-48 bg-gradient-to-br from-amber-100 to-amber-200 rounded-t-lg overflow-hidden">
-                  <img alt="Neera Sugar" className="w-full h-full object-cover" src="/lovable-uploads/eba3f987-276d-4443-8831-72d6c8043626.jpg" />
-                </div>
-                <CardHeader>
-                  <CardTitle className="text-amber-800">Neera Sugar</CardTitle>
-                  <CardDescription>Natural sweetener with low glycemic index</CardDescription>
-                </CardHeader>
-              </Card>
-
-              <Card className="border-green-200 hover:shadow-xl transition-all">
-                <div className="h-48 bg-gradient-to-br from-green-100 to-green-200 rounded-t-lg overflow-hidden">
-                  <img alt="Virgin Coconut Oil" className="w-full h-full object-cover" src="/lovable-uploads/40a66529-6750-4393-af80-e85e5aed29d8.png" />
-                </div>
-                <CardHeader>
-                  <CardTitle className="text-green-800">Virgin Coconut Oil</CardTitle>
-                  <CardDescription>Cold-pressed, pure and nutritious</CardDescription>
-                </CardHeader>
-              </Card>
-
-              <Card className="border-amber-200 hover:shadow-xl transition-all">
-                <div className="h-48 bg-gradient-to-br from-amber-100 to-amber-200 rounded-t-lg overflow-hidden">
-                  <img alt="Coconut Milkshake" className="w-full h-full object-cover" src="/lovable-uploads/d370a513-6062-4ecb-8449-7881c7e6c0ba.jpg" />
-                </div>
-                <CardHeader>
-                  <CardTitle className="text-amber-800">Coconut Milkshake</CardTitle>
-                  <CardDescription>Refreshing and naturally nutritious</CardDescription>
-                </CardHeader>
-              </Card>
+              {[
+                {
+                  image: "/lovable-uploads/eba3f987-276d-4443-8831-72d6c8043626.jpg",
+                  title: "Neera Sugar",
+                  description: "Natural sweetener with low glycemic index",
+                  delay: "delay-300"
+                },
+                {
+                  image: "/lovable-uploads/40a66529-6750-4393-af80-e85e5aed29d8.png",
+                  title: "Virgin Coconut Oil",
+                  description: "Cold-pressed, pure and nutritious",
+                  delay: "delay-500"
+                },
+                {
+                  image: "/lovable-uploads/d370a513-6062-4ecb-8449-7881c7e6c0ba.jpg",
+                  title: "Coconut Milkshake",
+                  description: "Refreshing and naturally nutritious",
+                  delay: "delay-700"
+                }
+              ].map((product, index) => (
+                <Card 
+                  key={index}
+                  className={`border-amber-200 hover:shadow-xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 group ${
+                    productsVisible ? `opacity-100 translate-y-0 ${product.delay}` : 'opacity-0 translate-y-10'
+                  }`}
+                >
+                  <div className="h-48 bg-gradient-to-br from-amber-100 to-amber-200 rounded-t-lg overflow-hidden">
+                    <img 
+                      alt={product.title} 
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                      src={product.image} 
+                    />
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="text-amber-800">{product.title}</CardTitle>
+                    <CardDescription>{product.description}</CardDescription>
+                  </CardHeader>
+                </Card>
+              ))}
             </div>
             
-            <div className="text-center">
-              <Button size="lg" className="bg-amber-700 hover:bg-amber-800 text-white px-8 py-4 text-lg font-semibold rounded-full" onClick={() => window.location.href = '/products'}>
+            <div className={`text-center transition-all duration-700 delay-800 ${
+              productsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}>
+              <Button 
+                size="lg" 
+                className="bg-amber-700 hover:bg-amber-800 text-white px-8 py-4 text-lg font-semibold rounded-full transform transition-all duration-300 hover:scale-105 hover:shadow-lg" 
+                onClick={() => window.location.href = '/products'}
+              >
                 View All Products
               </Button>
             </div>
@@ -199,20 +272,34 @@ const Index = () => {
       </section>
 
       {/* Customer Testimonials */}
-      <section className="py-20 bg-white">
+      <section 
+        ref={testimonialsRef}
+        className={`py-20 bg-white transition-all duration-1000 ${
+          testimonialsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
+      >
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-green-900 mb-6">
+              <h2 className={`text-4xl md:text-5xl font-bold text-green-900 mb-6 transition-all duration-700 ${
+                testimonialsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}>
                 What Our Customers Say
               </h2>
-              <p className="text-xl text-gray-700 max-w-2xl mx-auto">
+              <p className={`text-xl text-gray-700 max-w-2xl mx-auto transition-all duration-700 delay-200 ${
+                testimonialsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}>
                 Real experiences from families who trust ECONUT for their organic needs
               </p>
             </div>
             
             <div className="grid md:grid-cols-3 gap-8">
-              <Card className="border-green-200 hover:shadow-lg transition-shadow">
+              <Card 
+                key={0}
+                className={`border-green-200 hover:shadow-lg transition-shadow ${
+                  testimonialsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+              >
                 <CardHeader>
                   <div className="flex items-center space-x-4 mb-4">
                     <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
@@ -235,7 +322,12 @@ const Index = () => {
                 </CardContent>
               </Card>
 
-              <Card className="border-amber-200 hover:shadow-lg transition-shadow">
+              <Card 
+                key={1}
+                className={`border-amber-200 hover:shadow-lg transition-shadow ${
+                  testimonialsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+              >
                 <CardHeader>
                   <div className="flex items-center space-x-4 mb-4">
                     <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center">
@@ -258,7 +350,12 @@ const Index = () => {
                 </CardContent>
               </Card>
 
-              <Card className="border-green-200 hover:shadow-lg transition-shadow">
+              <Card 
+                key={2}
+                className={`border-green-200 hover:shadow-lg transition-shadow ${
+                  testimonialsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+              >
                 <CardHeader>
                   <div className="flex items-center space-x-4 mb-4">
                     <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
@@ -286,20 +383,34 @@ const Index = () => {
       </section>
 
       {/* Meet Our Farmers */}
-      <section className="py-20 bg-gradient-to-br from-green-50 to-amber-50">
+      <section 
+        ref={farmersRef}
+        className={`py-20 bg-gradient-to-br from-green-50 to-amber-50 transition-all duration-1000 ${
+          farmersVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
+      >
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-green-900 mb-6">
+              <h2 className={`text-4xl md:text-5xl font-bold text-green-900 mb-6 transition-all duration-700 ${
+                farmersVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}>
                 Meet Our Farmers
               </h2>
-              <p className="text-xl text-gray-700 max-w-2xl mx-auto">
+              <p className={`text-xl text-gray-700 max-w-2xl mx-auto transition-all duration-700 delay-200 ${
+                farmersVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}>
                 The passionate people behind every coconut, working with traditional methods and modern sustainability
               </p>
             </div>
             
             <div className="grid md:grid-cols-3 gap-8">
-              <Card className="border-green-200 hover:shadow-xl transition-all text-center">
+              <Card 
+                key={0}
+                className={`border-green-200 hover:shadow-xl transition-all text-center ${
+                  farmersVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+              >
                 <div className="h-48 bg-gradient-to-br from-green-100 to-green-200 rounded-t-lg overflow-hidden">
                   <img alt="Farmer Suresh" className="w-full h-full object-cover" src="https://images.unsplash.com/photo-1472396961693-142e6e269027?w=400&h=300&fit=crop" />
                 </div>
@@ -314,7 +425,12 @@ const Index = () => {
                 </CardContent>
               </Card>
 
-              <Card className="border-amber-200 hover:shadow-xl transition-all text-center">
+              <Card 
+                key={1}
+                className={`border-amber-200 hover:shadow-xl transition-all text-center ${
+                  farmersVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+              >
                 <div className="h-48 bg-gradient-to-br from-amber-100 to-amber-200 rounded-t-lg overflow-hidden">
                   <img alt="Farmer Lakshmi" className="w-full h-full object-cover" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&h=300&fit=crop" />
                 </div>
@@ -329,7 +445,12 @@ const Index = () => {
                 </CardContent>
               </Card>
 
-              <Card className="border-green-200 hover:shadow-xl transition-all text-center">
+              <Card 
+                key={2}
+                className={`border-green-200 hover:shadow-xl transition-all text-center ${
+                  farmersVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+              >
                 <div className="h-48 bg-gradient-to-br from-green-100 to-green-200 rounded-t-lg overflow-hidden">
                   <img alt="Farmer Ravi" className="w-full h-full object-cover" src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=400&h=300&fit=crop" />
                 </div>
@@ -349,20 +470,34 @@ const Index = () => {
       </section>
 
       {/* Certifications & Quality */}
-      <section className="py-20 bg-white">
+      <section 
+        ref={certificationsRef}
+        className={`py-20 bg-white transition-all duration-1000 ${
+          certificationsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
+      >
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-green-900 mb-6">
+              <h2 className={`text-4xl md:text-5xl font-bold text-green-900 mb-6 transition-all duration-700 ${
+                certificationsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}>
                 Certified Quality & Trust
               </h2>
-              <p className="text-xl text-gray-700 max-w-2xl mx-auto">
+              <p className={`text-xl text-gray-700 max-w-2xl mx-auto transition-all duration-700 delay-200 ${
+                certificationsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}>
                 Our certifications and quality standards ensure you get the finest organic products
               </p>
             </div>
             
             <div className="grid md:grid-cols-4 gap-8">
-              <Card className="border-green-200 hover:shadow-lg transition-shadow text-center">
+              <Card 
+                key={0}
+                className={`border-green-200 hover:shadow-lg transition-shadow text-center ${
+                  certificationsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+              >
                 <CardHeader>
                   <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Shield className="w-8 h-8 text-green-700" />
@@ -376,7 +511,12 @@ const Index = () => {
                 </CardContent>
               </Card>
 
-              <Card className="border-amber-200 hover:shadow-lg transition-shadow text-center">
+              <Card 
+                key={1}
+                className={`border-amber-200 hover:shadow-lg transition-shadow text-center ${
+                  certificationsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+              >
                 <CardHeader>
                   <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Leaf className="w-8 h-8 text-amber-700" />
@@ -390,7 +530,12 @@ const Index = () => {
                 </CardContent>
               </Card>
 
-              <Card className="border-green-200 hover:shadow-lg transition-shadow text-center">
+              <Card 
+                key={2}
+                className={`border-green-200 hover:shadow-lg transition-shadow text-center ${
+                  certificationsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+              >
                 <CardHeader>
                   <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Award className="w-8 h-8 text-green-700" />
@@ -404,7 +549,12 @@ const Index = () => {
                 </CardContent>
               </Card>
 
-              <Card className="border-amber-200 hover:shadow-lg transition-shadow text-center">
+              <Card 
+                key={3}
+                className={`border-amber-200 hover:shadow-lg transition-shadow text-center ${
+                  certificationsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+              >
                 <CardHeader>
                   <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Users className="w-8 h-8 text-amber-700" />
@@ -423,20 +573,34 @@ const Index = () => {
       </section>
 
       {/* Health Benefits */}
-      <section className="py-20 bg-gradient-to-br from-amber-50 to-green-50">
+      <section 
+        ref={healthRef}
+        className={`py-20 bg-gradient-to-br from-amber-50 to-green-50 transition-all duration-1000 ${
+          healthVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
+      >
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-green-900 mb-6">
+              <h2 className={`text-4xl md:text-5xl font-bold text-green-900 mb-6 transition-all duration-700 ${
+                healthVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}>
                 Nutritional Powerhouse
               </h2>
-              <p className="text-xl text-gray-700 max-w-2xl mx-auto">
+              <p className={`text-xl text-gray-700 max-w-2xl mx-auto transition-all duration-700 delay-200 ${
+                healthVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}>
                 Discover the incredible health benefits of our organic coconut products
               </p>
             </div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <Card className="border-green-200 hover:shadow-lg transition-shadow">
+              <Card 
+                key={0}
+                className={`border-green-200 hover:shadow-lg transition-shadow ${
+                  healthVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+              >
                 <CardHeader>
                   <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
                     <Heart className="w-6 h-6 text-green-700" />
@@ -450,7 +614,12 @@ const Index = () => {
                 </CardContent>
               </Card>
 
-              <Card className="border-amber-200 hover:shadow-lg transition-shadow">
+              <Card 
+                key={1}
+                className={`border-amber-200 hover:shadow-lg transition-shadow ${
+                  healthVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+              >
                 <CardHeader>
                   <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mb-4">
                     <Shield className="w-6 h-6 text-amber-700" />
@@ -464,7 +633,12 @@ const Index = () => {
                 </CardContent>
               </Card>
 
-              <Card className="border-green-200 hover:shadow-lg transition-shadow">
+              <Card 
+                key={2}
+                className={`border-green-200 hover:shadow-lg transition-shadow ${
+                  healthVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+              >
                 <CardHeader>
                   <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
                     <Leaf className="w-6 h-6 text-green-700" />
@@ -478,7 +652,12 @@ const Index = () => {
                 </CardContent>
               </Card>
 
-              <Card className="border-amber-200 hover:shadow-lg transition-shadow">
+              <Card 
+                key={3}
+                className={`border-amber-200 hover:shadow-lg transition-shadow ${
+                  healthVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+              >
                 <CardHeader>
                   <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mb-4">
                     <Award className="w-6 h-6 text-amber-700" />
@@ -492,7 +671,12 @@ const Index = () => {
                 </CardContent>
               </Card>
 
-              <Card className="border-green-200 hover:shadow-lg transition-shadow">
+              <Card 
+                key={4}
+                className={`border-green-200 hover:shadow-lg transition-shadow ${
+                  healthVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+              >
                 <CardHeader>
                   <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
                     <Users className="w-6 h-6 text-green-700" />
@@ -506,7 +690,12 @@ const Index = () => {
                 </CardContent>
               </Card>
 
-              <Card className="border-amber-200 hover:shadow-lg transition-shadow">
+              <Card 
+                key={5}
+                className={`border-amber-200 hover:shadow-lg transition-shadow ${
+                  healthVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+              >
                 <CardHeader>
                   <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mb-4">
                     <Star className="w-6 h-6 text-amber-700" />
@@ -525,58 +714,51 @@ const Index = () => {
       </section>
 
       {/* Sustainability Impact */}
-      <section className="py-20 bg-white">
+      <section 
+        ref={impactRef}
+        className={`py-20 bg-white transition-all duration-1000 ${
+          impactVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
+      >
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-green-900 mb-6">
+              <h2 className={`text-4xl md:text-5xl font-bold text-green-900 mb-6 transition-all duration-700 ${
+                impactVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}>
                 Our Environmental Impact
               </h2>
-              <p className="text-xl text-gray-700 max-w-2xl mx-auto">
+              <p className={`text-xl text-gray-700 max-w-2xl mx-auto transition-all duration-700 delay-200 ${
+                impactVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}>
                 Creating positive change for our planet, one coconut at a time
               </p>
             </div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-              <Card className="border-green-200 text-center">
-                <CardHeader>
-                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Recycle className="w-8 h-8 text-green-700" />
-                  </div>
-                  <CardTitle className="text-3xl font-bold text-green-900">2,500</CardTitle>
-                  <CardDescription>Tons CO2 Saved Annually</CardDescription>
-                </CardHeader>
-              </Card>
-
-              <Card className="border-amber-200 text-center">
-                <CardHeader>
-                  <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Leaf className="w-8 h-8 text-amber-700" />
-                  </div>
-                  <CardTitle className="text-3xl font-bold text-amber-800">15,000</CardTitle>
-                  <CardDescription>Trees Preserved</CardDescription>
-                </CardHeader>
-              </Card>
-
-              <Card className="border-green-200 text-center">
-                <CardHeader>
-                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Users className="w-8 h-8 text-green-700" />
-                  </div>
-                  <CardTitle className="text-3xl font-bold text-green-900">500+</CardTitle>
-                  <CardDescription>Farmer Families Supported</CardDescription>
-                </CardHeader>
-              </Card>
-
-              <Card className="border-amber-200 text-center">
-                <CardHeader>
-                  <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Award className="w-8 h-8 text-amber-700" />
-                  </div>
-                  <CardTitle className="text-3xl font-bold text-amber-800">100%</CardTitle>
-                  <CardDescription>Renewable Energy Powered</CardDescription>
-                </CardHeader>
-              </Card>
+              {[
+                { icon: Recycle, number: 2500, suffix: "", label: "Tons CO2 Saved Annually", delay: "delay-300" },
+                { icon: Leaf, number: 15000, suffix: "", label: "Trees Preserved", delay: "delay-500" },
+                { icon: Users, number: 500, suffix: "+", label: "Farmer Families Supported", delay: "delay-700" },
+                { icon: Award, number: 100, suffix: "%", label: "Renewable Energy Powered", delay: "delay-900" }
+              ].map((stat, index) => (
+                <Card 
+                  key={index}
+                  className={`border-green-200 text-center transform transition-all duration-500 hover:scale-105 hover:shadow-lg ${
+                    impactVisible ? `opacity-100 translate-y-0 ${stat.delay}` : 'opacity-0 translate-y-10'
+                  }`}
+                >
+                  <CardHeader>
+                    <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300 hover:rotate-12">
+                      <stat.icon className="w-8 h-8 text-green-700" />
+                    </div>
+                    <CardTitle className="text-3xl font-bold text-green-900">
+                      {impactVisible && <AnimatedCounter end={stat.number} suffix={stat.suffix} />}
+                    </CardTitle>
+                    <CardDescription>{stat.label}</CardDescription>
+                  </CardHeader>
+                </Card>
+              ))}
             </div>
 
             <div className="bg-gradient-to-r from-green-100 to-amber-100 rounded-lg p-8">
@@ -596,14 +778,23 @@ const Index = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-gradient-to-br from-green-50 to-amber-50">
+      <section 
+        ref={faqRef}
+        className={`py-20 bg-gradient-to-br from-green-50 to-amber-50 transition-all duration-1000 ${
+          faqVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
+      >
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-green-900 mb-6">
+              <h2 className={`text-4xl md:text-5xl font-bold text-green-900 mb-6 transition-all duration-700 ${
+                faqVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}>
                 Frequently Asked Questions
               </h2>
-              <p className="text-xl text-gray-700 max-w-2xl mx-auto">
+              <p className={`text-xl text-gray-700 max-w-2xl mx-auto transition-all duration-700 delay-200 ${
+                faqVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}>
                 Everything you need to know about ECONUT products and our farming practices
               </p>
             </div>
@@ -631,24 +822,32 @@ const Index = () => {
                   answer: "We practice direct trade, ensuring farmers receive 60-70% more than market rates. Your purchase directly supports over 500 farming families and funds community development projects in rural Karnataka."
                 }
               ].map((faq, index) => (
-                <Card key={index} className="border-green-200">
+                <Card 
+                  key={index} 
+                  className={`border-green-200 transition-all duration-500 transform hover:shadow-lg ${
+                    faqVisible ? `opacity-100 translate-y-0` : 'opacity-0 translate-y-10'
+                  }`}
+                  style={{ transitionDelay: `${index * 100}ms` }}
+                >
                   <CardHeader 
-                    className="cursor-pointer hover:bg-green-50 transition-colors"
+                    className="cursor-pointer hover:bg-green-50 transition-all duration-300"
                     onClick={() => toggleFaq(index)}
                   >
                     <div className="flex justify-between items-center">
                       <CardTitle className="text-green-900 text-lg font-semibold">
                         {faq.question}
                       </CardTitle>
-                      {openFaq === index ? (
-                        <ChevronUp className="w-5 h-5 text-green-700" />
-                      ) : (
-                        <ChevronDown className="w-5 h-5 text-green-700" />
-                      )}
+                      <div className="transform transition-transform duration-300">
+                        {openFaq === index ? (
+                          <ChevronUp className="w-5 h-5 text-green-700" />
+                        ) : (
+                          <ChevronDown className="w-5 h-5 text-green-700" />
+                        )}
+                      </div>
                     </div>
                   </CardHeader>
                   {openFaq === index && (
-                    <CardContent>
+                    <CardContent className="animate-accordion-down">
                       <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
                     </CardContent>
                   )}
@@ -660,14 +859,23 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 bg-white">
+      <section 
+        ref={contactRef}
+        className={`py-20 bg-white transition-all duration-1000 ${
+          contactVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
+      >
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-green-900 mb-6">
+              <h2 className={`text-4xl md:text-5xl font-bold text-green-900 mb-6 transition-all duration-700 ${
+                contactVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}>
                 Get In Touch
               </h2>
-              <p className="text-xl text-gray-700 max-w-2xl mx-auto">
+              <p className={`text-xl text-gray-700 max-w-2xl mx-auto transition-all duration-700 delay-200 ${
+                contactVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}>
                 Ready to experience the finest coconut products? Contact us today to learn more about our offerings or to place an order.
               </p>
             </div>
@@ -717,7 +925,12 @@ const Index = () => {
                   </div>
                 </div>
 
-                <Card className="border-amber-200 bg-gradient-to-br from-amber-50 to-green-50">
+                <Card 
+                  key={0}
+                  className={`border-amber-200 bg-gradient-to-br from-amber-50 to-green-50 ${
+                    contactVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                  }`}
+                >
                   <CardHeader>
                     <CardTitle className="text-amber-800 flex items-center">
                       <Users className="w-5 h-5 mr-2" />
@@ -744,7 +957,12 @@ const Index = () => {
               </div>
 
               {/* Contact Form */}
-              <Card className="border-green-200 hover:shadow-lg transition-shadow">
+              <Card 
+                key={1}
+                className={`border-green-200 hover:shadow-lg transition-shadow ${
+                  contactVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+              >
                 <CardHeader>
                   <CardTitle className="text-green-900">Send us a Message</CardTitle>
                   <CardDescription>
