@@ -1,3 +1,4 @@
+
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -83,14 +84,25 @@ const Products = () => {
     <div className="min-h-screen bg-white">
       <Navigation />
       
-      {/* Hero Section - Enhanced Mobile Responsiveness */}
-      <section className="pt-20 sm:pt-24 pb-8 sm:pb-16 bg-gradient-to-br from-green-50 to-amber-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Hero Section - Enhanced with Background Image */}
+      <section 
+        className="pt-20 sm:pt-24 pb-8 sm:pb-16 bg-gradient-to-br from-green-50/90 to-amber-50/90 relative"
+        style={{
+          backgroundImage: `url('https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?w=1920&h=1080&fit=crop')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-green-900/40 to-amber-900/30"></div>
+        
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-green-900 mb-4 sm:mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight drop-shadow-lg">
               Premium Organic Products
             </h1>
-            <p className="text-base sm:text-lg md:text-xl text-green-800 max-w-3xl mx-auto leading-relaxed px-4">
+            <p className="text-base sm:text-lg md:text-xl text-white/95 max-w-3xl mx-auto leading-relaxed px-4 drop-shadow-md">
               Discover our complete range of authentic coconut products, sourced directly 
               from Karnataka's finest organic farms and processed with traditional methods.
             </p>
