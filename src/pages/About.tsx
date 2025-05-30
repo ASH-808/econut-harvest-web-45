@@ -9,8 +9,11 @@ const About = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-green-50 to-amber-50">
-        <div className="container mx-auto px-4">
+      <section className="relative pt-24 pb-16 bg-gradient-to-br from-green-50 to-amber-50">
+        <div className="absolute inset-0 bg-cover bg-center opacity-20" style={{
+          backgroundImage: "url('/lovable-uploads/30da27fd-e3a5-4f76-bef9-af0795ffb5b5.png')"
+        }} />
+        <div className="relative container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl md:text-6xl font-bold text-green-900 mb-6">
               About ECONUT
