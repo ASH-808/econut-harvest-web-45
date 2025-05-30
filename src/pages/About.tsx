@@ -57,14 +57,22 @@ const About = () => {
                   </li>
                 </ul>
               </div>
-              <div className="h-80 bg-gradient-to-br from-green-100 to-amber-100 rounded-lg flex items-center justify-center">
-                <span className="text-8xl">🌴</span>
+              <div className="h-80 rounded-lg overflow-hidden">
+                <img 
+                  src="/lovable-uploads/209e7961-33e8-47ef-88b4-2a8aca82fac5.png" 
+                  alt="Fresh coconuts on palm tree" 
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
 
             <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="h-80 bg-gradient-to-br from-amber-100 to-green-100 rounded-lg flex items-center justify-center order-2 md:order-1">
-                <span className="text-8xl">🎯</span>
+              <div className="h-80 rounded-lg overflow-hidden order-2 md:order-1">
+                <img 
+                  src="/lovable-uploads/b0fed000-e965-4d2e-98a1-16ea2ab4a669.png" 
+                  alt="Team collaboration and partnership" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="order-1 md:order-2">
                 <h2 className="text-4xl font-bold text-green-900 mb-6">Our Vision</h2>
